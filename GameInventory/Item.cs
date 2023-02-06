@@ -6,22 +6,18 @@ using System.Threading.Tasks;
 
 namespace GameInventory
 {
-    internal class Item
+    public class Item
     {
-
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public RarityType Rarity { get; set; }
-        public double Value { get; set; }
-        public double Weight { get; set; }
+        // Base properties
+        public string Name { get; set; } // Name of the Item
+        public string Description { get; set; } // Description of what the Item does
+        public double Value { get; set; } // Weight, in pounds, of the Item
+        public double Weight { get; set; } // Value, in USD, of the Item's worth
 
 
         /// <summary>
         /// Item Constructor
-        /// 
         /// When called, and given parameters, creates an object called Item, with different value types.
-        /// Checks Rarity value, based on RarityType enum, and appends to name if not COMMON.
-        /// 
         /// Used by Clue and Weapon classes to make Items, with specific values.
         /// </summary>
         /// <param name="name">Name of the Item</param>
@@ -30,15 +26,10 @@ namespace GameInventory
         /// <param name="value">Value, in USD, of the Item's worth</param>
         public Item(string name, string description, double weight, double value)
         {
-            Description = description;
             Name = name;
+            Description = description;
             Weight = weight;
             Value = value;
-
-            if (Rarity != RarityType.COMMON)
-            {
-                name = Rarity.ToString() + " " + name;
-            }
         }
 
         /// <summary>
@@ -52,7 +43,6 @@ namespace GameInventory
                                $"Description: {item.Description.ToString()}\n" +
                                $"Weight: {item.Weight.ToString()}\n" +
                                $"Value: {item.Value.ToString()}\n";
-            Console.WriteLine(strItem);
             return strItem;
         }
     }
